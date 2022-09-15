@@ -6,3 +6,43 @@
     <h1 class="display-4">ORTFLIX</h1>
     <p>Las mejores series en un solo lugar </p>
 </div>
+<div class="container">
+    <div class="row">
+        @{
+            foreach(Series serie in ViewBag.listadoSeries)
+            {
+                <div class="col-sm-4">
+                    <div class="card">
+                        <img src="@serie.ImagenSerie" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">@serie.Nombre</h5>
+                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#ModalSerie" onclick="MostrarTemporadas(@serie.IdSerie)">Temporadas</button>
+                            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#ModalSerie" onclick="MostrarActores(@serie.IdSerie)">Actores</button>
+                            <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#ModalSerie" onclick="MostrarInfo(@serie.IdSerie)">Más info</button>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="ModalSerie" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="NombreSerie">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div id="ContenidoSerie">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>

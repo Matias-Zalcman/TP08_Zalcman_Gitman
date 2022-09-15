@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 using TP08_Zalcman_Gitman.Models;
 
 namespace TP08_Zalcman_Gitman.Controllers;
@@ -15,6 +16,7 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
+        ViewBag.listadoSeries = BD.ListarSeries();
         return View();
     }
 
