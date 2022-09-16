@@ -20,9 +20,19 @@ public class HomeController : Controller
         return View();
     }
 
-    public IActionResult Privacy()
+    public List<Temporadas> VerTemporadasAjax(int IdSerie)
     {
-        return View();
+        return BD.ListarTemporadas(IdSerie);
+    }
+
+    public List<Actores> VerActoresAjax(int IdSerie)
+    {
+        return BD.ListarActores(IdSerie);
+    }
+
+    public Series VerInfoSerieAjax(int IdSerie)
+    {
+        return BD.VerInfoSerie(IdSerie);
     }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

@@ -61,14 +61,14 @@ function MostrarInfo(IdS)
             success:
                 function (response)
                 {
-                    $("#NombreSerie").html("Actores de la serie @ViewBag.listadoSeries[" + IdS + "].Nombre");
-                    $("#ContenidoSerie").html("@{foreach(Actores actor in " + response + "){<p>@actor.Nombre</p>}}");
+                    $("#NombreSerie").html(response.Nombre);
+                    $("#ContenidoSerie").html("<h4>" + response.AñoInicio + "</h4>" + "<p>" + response.Sinopsis + "</p>");
                 },
             error:
                 function (response)
                 {
-                    $("#NombreSerie").html("Actores de la serie @ViewBag.listadoSeries[" + IdS + "].Nombre");
-                    $("#ContenidoSerie").html("No se encontraron actores de esta serie");
+                    $("#NombreSerie").html(response.Nombre);
+                    $("#ContenidoSerie").html("No se encontró más información de esta serie");
                 }
         }
     );
