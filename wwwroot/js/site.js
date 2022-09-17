@@ -13,13 +13,17 @@ function MostrarTemporadas(IdS)
             success:
                 function (response)
                 {
-                    $("#NombreSerie").html("Temporadas de la serie @ViewBag.listadoSeries[" + IdS + "].Nombre");
-                    $("#ContenidoSerie").html("@{foreach(Temporadas temporada in " + response + "){<p>Temporada @temporada.NumeroTemporada - @temporada.TituloTemporada</p>}}");
+                    $("#NombreSerie").html("Temporadas de la serie");
+                    var contenido = "";
+                    response.forEach(element =>
+                        contenido += "<p>Temporada " + element.numeroTemporada + " - " + element.tituloTemporada + "</p>"
+                    );
+                    $("#ContenidoSerie").html(contenido);
                 },
             error:
                 function (response)
                 {
-                    $("#NombreSerie").html("Temporadas de la serie @ViewBag.listadoSeries[" + IdS + "].Nombre");
+                    $("#NombreSerie").html("Temporadas de la serie");
                     $("#ContenidoSerie").html("No se encontraron temporadas de esta serie");
                 }
         }
@@ -37,13 +41,17 @@ function MostrarActores(IdS)
             success:
                 function (response)
                 {
-                    $("#NombreSerie").html("Actores de la serie @ViewBag.listadoSeries[" + IdS + "].Nombre");
-                    $("#ContenidoSerie").html("@{foreach(Actores actor in " + response + "){<p>@actor.Nombre</p>}}");
+                    $("#NombreSerie").html("Actores de la serie");
+                    var contenido = "";
+                    response.forEach(element =>
+                        contenido += "<p>" + element.nombre + "</p>"
+                    );
+                    $("#ContenidoSerie").html(contenido);
                 },
             error:
                 function (response)
                 {
-                    $("#NombreSerie").html("Actores de la serie @ViewBag.listadoSeries[" + IdS + "].Nombre");
+                    $("#NombreSerie").html("Actores de la serie");
                     $("#ContenidoSerie").html("No se encontraron actores de esta serie");
                 }
         }
@@ -61,13 +69,13 @@ function MostrarInfo(IdS)
             success:
                 function (response)
                 {
-                    $("#NombreSerie").html(response.Nombre);
-                    $("#ContenidoSerie").html("<h4>" + response.AñoInicio + "</h4>" + "<p>" + response.Sinopsis + "</p>");
+                    $("#NombreSerie").html(response.nombre);
+                    $("#ContenidoSerie").html("<h5>" + response.añoInicio + "</h5>" + "<p>" + response.sinopsis + "</p>");
                 },
             error:
                 function (response)
                 {
-                    $("#NombreSerie").html(response.Nombre);
+                    $("#NombreSerie").html(response.nombre);
                     $("#ContenidoSerie").html("No se encontró más información de esta serie");
                 }
         }
