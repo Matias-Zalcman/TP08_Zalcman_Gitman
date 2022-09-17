@@ -3,21 +3,21 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">ORTFLIX</h1>
-    <p>Las mejores series en un solo lugar </p>
+    <h1 class="display-4 logo">ORTFLIX</h1>
+    <h5>Las mejores series en un solo lugar</h5>
 </div>
 <div class="container">
     <div class="row">
         @{
             foreach(Series serie in ViewBag.listadoSeries)
             {
-                <div class="col-sm-4">
-                    <div class="card">
+                <div class="col-sm-4 series">
+                    <div class="card black">
                         <img src="@serie.ImagenSerie" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h5 class="card-title">@serie.Nombre</h5>
                             <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#ModalSerie" onclick="MostrarTemporadas(@serie.IdSerie)">Temporadas</button>
-                            <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#ModalSerie" onclick="MostrarActores(@serie.IdSerie)">Actores</button>
+                            <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#ModalSerie" onclick="MostrarActores(@serie.IdSerie)">Actores</button>
                             <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#ModalSerie" onclick="MostrarInfo(@serie.IdSerie)">Más info</button>
                         </div>
                     </div>
@@ -30,10 +30,10 @@
 <!-- Modal -->
 <div class="modal fade" id="ModalSerie" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
-    <div class="modal-content">
+    <div class="modal-content black">
       <div class="modal-header">
         <h4 class="modal-title text-center" id="NombreSerie">Modal title</h4>
-        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+        <button type="button" class="close black" data-bs-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
